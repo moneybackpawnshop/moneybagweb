@@ -8,18 +8,23 @@ import { StaffPage } from './pages/StaffPage';
 import { StockPage } from './pages/StockPage';
 import { PawnTicketPage } from './pages/PawnTicketPage';
 
-export const router = createHashRouter([
+export const router = createHashRouter(
+  [
+    {
+      path: '/',
+      element: <Layout />,
+      children: [
+        { index: true, element: <HomePage /> },
+        { path: 'kyc', element: <KYCPage /> },
+        { path: 'evaluation', element: <EvaluationPage /> },
+        { path: 'pawn-tickets', element: <PawnTicketPage /> },
+        { path: 'verification', element: <VerificationPage /> },
+        { path: 'staff', element: <StaffPage /> },
+        { path: 'stock', element: <StockPage /> },
+      ],
+    },
+  ],
   {
-    path: '/',
-    element: <Layout />,
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: 'kyc', element: <KYCPage /> },
-      { path: 'evaluation', element: <EvaluationPage /> },
-      { path: 'pawn-tickets', element: <PawnTicketPage /> },
-      { path: 'verification', element: <VerificationPage /> },
-      { path: 'staff', element: <StaffPage /> },
-      { path: 'stock', element: <StockPage /> },
-    ],
-  },
-]);
+    basename: '/', // 👈 ADD THIS
+  }
+);

@@ -47,24 +47,39 @@ export function EvaluationSection({ language }: EvaluationSectionProps) {
   const [goldPrice, setGoldPrice] = useState<GoldPrice | null>(null);
 
   // Fetch real-time gold price (mock API - replace with actual API)
-  useEffect(() => {
-    // Simulate fetching from real-time gold price API
-    const fetchGoldPrice = async () => {
-      // In production, use: https://api.goldapi.io/api/XAU/THB
-      // or Thailand Gold Association API
-      const mockPrice: GoldPrice = {
-        buy: 31500,
-        sell: 31600,
-        timestamp: new Date().toISOString(),
-      };
-      setGoldPrice(mockPrice);
-    };
+useEffect(() => {
+  const fetchGoldPrice = async () => {
+    try {
+      const API_URL =
+        import.meta.env.DEV
+          ? "/gold-api/details?readjson=false" // ✅ local (vite proxy)
+          : "https://api.allorigins.win/raw?url=https://goldtraders.or.th/api/GoldPrices/details?readjson=false"; // ✅ production
 
-    fetchGoldPrice();
-    // Refresh every 5 minutes
-    const interval = setInterval(fetchGoldPrice, 300000);
-    return () => clearInterval(interval);
-  }, []);
+      const res = await fetch(API_URL);
+      const data = await res.json();
+
+      const latest = data.reduce((prev: any, current: any) =>
+        prev.goldPriceID > current.goldPriceID ? prev : current
+      );
+
+      setGoldPrice({
+        buy: latest.bL_BuyPrice,
+        sell: latest.bL_SellPrice,
+        timestamp: latest.asTime,
+      });
+    } catch (error) {
+      console.error("Failed to fetch gold price:", error);
+    }
+  };
+
+  fetchGoldPrice();
+
+
+  // refresh every 60 minutes
+  const interval = setInterval(fetchGoldPrice, 300000);
+
+  return () => clearInterval(interval);
+}, []);
 
   const t = {
     en: {

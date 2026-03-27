@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Globe } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { Button } from './ui/button';
-import { Logo } from './ui/Logo';
+import { Logo } from './ui/logo';
 interface HeaderProps {
   language: 'en' | 'th';
   onLanguageToggle: () => void;

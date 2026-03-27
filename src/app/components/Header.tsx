@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Globe } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { Button } from './ui/button';
-
+import { Logo } from './ui/Logo';
 interface HeaderProps {
   language: 'en' | 'th';
   onLanguageToggle: () => void;
@@ -29,7 +29,7 @@ export function Header({ language, onLanguageToggle }: HeaderProps) {
       verification: 'ตรวจสอบ',
       staff: 'พนักงาน',
       stock: 'จัดการสต็อก',
-    },
+    }
   };
 
   const isActive = (path: string) => {
@@ -41,13 +41,8 @@ export function Header({ language, onLanguageToggle }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center cursor-pointer">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-[#10B981] rounded-lg flex items-center justify-center">
-                <span className="text-white text-xl font-bold font-['Montserrat']">M</span>
-              </div>
-              <span className="text-white text-xl font-bold font-['Montserrat']">Money bag</span>
-            </div>
+          <Link to="/">
+            <Logo />
           </Link>
 
           {/* Navigation */}

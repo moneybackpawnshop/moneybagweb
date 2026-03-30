@@ -50,22 +50,13 @@ export function EvaluationSection({ language }: EvaluationSectionProps) {
 useEffect(() => {
   const fetchGoldPrice = async () => {
     try {
-      const API_URL =
-        import.meta.env.DEV
-          ? "/gold-api/details?readjson=false" // ✅ local (vite proxy)
-          : "https://api.allorigins.win/raw?url=https://goldtraders.or.th/api/GoldPrices/details?readjson=false"; // ✅ production
-
-      const res = await fetch(API_URL);
+      const res = await fetch("https://moneybag-api.vercel.app/api/gold");
       const data = await res.json();
 
-      const latest = data.reduce((prev: any, current: any) =>
-        prev.goldPriceID > current.goldPriceID ? prev : current
-      );
-
       setGoldPrice({
-        buy: latest.bL_BuyPrice,
-        sell: latest.bL_SellPrice,
-        timestamp: latest.asTime,
+        buy: data.buy,
+        sell: data.sell,
+        timestamp: data.timestamp,
       });
     } catch (error) {
       console.error("Failed to fetch gold price:", error);
@@ -74,8 +65,7 @@ useEffect(() => {
 
   fetchGoldPrice();
 
-
-  // refresh every 60 minutes
+  // refresh every 5 minutes
   const interval = setInterval(fetchGoldPrice, 300000);
 
   return () => clearInterval(interval);

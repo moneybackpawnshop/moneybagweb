@@ -1,4 +1,0 @@
-{
-  "buildCommand": "npm install && npm install -g vite && vite build",
-  "outputDirectory": "dist"
-}

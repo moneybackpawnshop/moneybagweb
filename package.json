@@ -2,13 +2,9 @@
   "name": "moneybagweb",
   "private": true,
   "version": "0.0.1",
-  "type": "module",  
+  "type": "module",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "preview": "vite preview"
+    "build": "vite build"
   },
   "engines": {
     "node": "24.x"

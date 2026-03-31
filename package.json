@@ -2,8 +2,7 @@
   "name": "moneybagweb",
   "private": true,
   "version": "0.0.1",
-  "type": "module",
-  /*"homepage": "https://moneybackpawnshop.github.io/moneybagweb/",*/
+  "type": "module",  
   "scripts": {
     "build": "vite build",
     "dev": "vite",

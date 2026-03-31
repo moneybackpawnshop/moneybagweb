@@ -1,17 +1,18 @@
 {
-  "name": "@figma/my-make-file",
+  "name": "moneybagweb",
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": "https://moneybackpawnshop.github.io/moneybagweb/",
+  /*"homepage": "https://moneybackpawnshop.github.io/moneybagweb/",*/
   "scripts": {
     "build": "vite build",
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "preview": "vite preview"
   },
   "engines": {
-    "node": ">=18"
+    "node": "18.x"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",

@@ -161,7 +161,7 @@ useEffect(() => {
             }
     } else {
       // For other items, use requested amount as base
-      baseValue = parseFloat(formData.requestAmount) * 1.5;
+      baseValue = parseFloat(formData.requestAmount) * 1;
     }
 
     // Adjust based on condition

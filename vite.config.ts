@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/moneybagweb/', // ✅ for GitHub Pages
+  base:  '/' ,//'/moneybagweb/', // ✅ for GitHub Pages
 
   plugins: [
     react(),

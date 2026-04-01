@@ -88,7 +88,7 @@ useEffect(() => {
       goldPrice: 'Real-time Gold Price',
       goldBuy: 'Buy',
       goldSell: 'Sell',
-      perGram: 'per gram',
+      perGram: 'per Baht',
       category: 'Category',
       categoryPlaceholder: 'Select category',
       categories: ['Gold', 'Watches', 'Mobile Phones', 'Electronics', 'Jewelry', 'Luxury Items', 'Other'],
@@ -118,7 +118,7 @@ useEffect(() => {
       goldPrice: 'ราคาทองคำวันนี้',
       goldBuy: 'รับซื้อ',
       goldSell: 'ขาย',
-      perGram: 'ต่อกรัม',
+      perGram: 'ต่อบาท',
       category: 'หมวดหมู่',
       categoryPlaceholder: 'เลือกหมวดหมู่',
       categories: ['ทองคำ', 'นาฬิกา', 'มือถือ', 'อิเล็กทรอนิกส์', 'เครื่องประดับ', 'สินค้าหรู', 'อื่นๆ'],
@@ -157,8 +157,8 @@ useEffect(() => {
       // Use real-time gold price
       if (goldPrice) {
         // Assume 1 baht of gold (15.244 grams)
-        baseValue = goldPrice.buy * 15.244;
-      }
+        baseValue = goldPrice.buy * 1
+            }
     } else {
       // For other items, use requested amount as base
       baseValue = parseFloat(formData.requestAmount) * 1.5;
@@ -195,7 +195,7 @@ useEffect(() => {
     const prompt = `You are an expert pawn shop valuator for Money bag. Analyze this item and provide a detailed valuation.
 
 REAL-TIME MARKET DATA:
-${formData.category === 'Gold' || formData.category === 'ทองคำ' ? `- Gold Price: ${goldPrice?.buy} THB/gram (Buy) | ${goldPrice?.sell} THB/gram (Sell)` : ''}
+${formData.category === 'Gold' || formData.category === 'ทองคำ' ? `- Gold Price: ${goldPrice?.buy} THB/1 Baht (Buy) | ${goldPrice?.sell} THB/1 Baht (Sell)` : ''}
 
 ITEM DETAILS:
 - Category: ${formData.category}
@@ -224,7 +224,7 @@ Format response in JSON:
   "conditionScore": <1-10>,
   "valuationFactors": ["factor1", "factor2"],
   "riskLevel": "low|medium|high",
-  "interestRate": <percentage>,
+  "interestRate": <percentage>,s
   "notes": "detailed analysis"
 }`;
 
